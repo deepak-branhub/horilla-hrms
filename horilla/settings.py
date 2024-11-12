@@ -120,20 +120,30 @@ if env("DATABASE_URL", default=None):
     }
 else:
     DATABASES = {
-        "default": {
-            "ENGINE": env("DB_ENGINE", default="django.db.backends.sqlite3"),
-            "NAME": env(
-                "DB_NAME",
-                default=os.path.join(
-                    BASE_DIR,
-                    "TestDB_Horilla.sqlite3",
-                ),
-            ),
-            "USER": env("DB_USER", default=""),
-            "PASSWORD": env("DB_PASSWORD", default=""),
-            "HOST": env("DB_HOST", default=""),
-            "PORT": env("DB_PORT", default=""),
-        }
+
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'test',
+        'USER': 'deepakkushwaha',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+
+        # "default": {
+        #     "ENGINE": env("DB_ENGINE", default="django.db.backends.sqlite3"),
+        #     "NAME": env(
+        #         "DB_NAME",
+        #         default=os.path.join(
+        #             BASE_DIR,
+        #             "TestDB_Horilla.sqlite3",
+        #         ),
+        #     ),
+        #     "USER": env("DB_USER", default=""),
+        #     "PASSWORD": env("DB_PASSWORD", default=""),
+        #     "HOST": env("DB_HOST", default=""),
+        #     "PORT": env("DB_PORT", default=""),
+        # }
     }
 
 # Password validation
