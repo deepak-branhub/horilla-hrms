@@ -117,7 +117,6 @@ WSGI_APPLICATION = "horilla.wsgi.application"
 
 # tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
 
-print(os.environ.get('DATABASE_URL'))
 if env("DATABASE_URL", default=None):
     DATABASES = {
         "default": env.db(),
@@ -134,17 +133,17 @@ else:
     #     'PORT': '5432',
     # }
 
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bh-hrms',
-        'USER': 'bh-hrms_owner',
-        'PASSWORD': 'U4dm5vuAgPzK',
-        'HOST': 'ep-late-boat-a1yz14de.ap-southeast-1.aws.neon.tech',
-        'PORT': '5432',  # Default PostgreSQL port
-        # 'OPTIONS': {
-        #     'sslmode': 'require',  # Ensure SSL connection
-        # },
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'bh-hrms',
+    #     'USER': 'bhflexdbsonar',
+    #     'PASSWORD': 'znHG{53]3$#W',
+    #     'HOST': 'bhflexdbsonar.postgres.database.azure.com',
+    #     'PORT': '5432',  # Default PostgreSQL port
+    #     'OPTIONS': {
+    #         'sslmode': 'require',  # Ensure SSL connection
+    #     },
+    # }
 
     # 'default': {
     #     'ENGINE': 'django.db.backends.postgresql',
@@ -155,20 +154,16 @@ else:
     #     'PORT': 5432,
     # }
 
-        # "default": {
-        #     "ENGINE": env("DB_ENGINE", default="django.db.backends.sqlite3"),
-        #     "NAME": env(
-        #         "DB_NAME",
-        #         default=os.path.join(
-        #             BASE_DIR,
-        #             "TestDB_Horilla.sqlite3",
-        #         ),
-        #     ),
-        #     "USER": env("DB_USER", default=""),
-        #     "PASSWORD": env("DB_PASSWORD", default=""),
-        #     "HOST": env("DB_HOST", default=""),
-        #     "PORT": env("DB_PORT", default=""),
-        # }
+        "default": {
+            "ENGINE": env("DB_ENGINE", default="django.db.backends.postgresql"),
+            "NAME": env(
+                "DB_NAME", default="bh-hrms"
+            ),
+            "USER": env("DB_USER", default=""),
+            "PASSWORD": env("DB_PASSWORD", default=""),
+            "HOST": env("DB_HOST", default=""),
+            "PORT": env("DB_PORT", default=""),
+        }
     }
 
 # Password validation
