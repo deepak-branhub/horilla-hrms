@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from os.path import join
 from pathlib import Path
+from urllib.parse import urlparse
 
 import environ
 from django.contrib.messages import constants as messages
@@ -114,6 +115,9 @@ WSGI_APPLICATION = "horilla.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
+
+print(os.environ.get('DATABASE_URL'))
 if env("DATABASE_URL", default=None):
     DATABASES = {
         "default": env.db(),
@@ -121,14 +125,35 @@ if env("DATABASE_URL", default=None):
 else:
     DATABASES = {
 
+    #     'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'test',
+    #     'USER': 'deepakkushwaha',
+    #     'PASSWORD': '',
+    #     'HOST': 'localhost',
+    #     'PORT': '5432',
+    # }
+
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'test',
-        'USER': 'deepakkushwaha',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': 'bh-hrms',
+        'USER': 'bh-hrms_owner',
+        'PASSWORD': 'U4dm5vuAgPzK',
+        'HOST': 'ep-late-boat-a1yz14de.ap-southeast-1.aws.neon.tech',
+        'PORT': '5432',  # Default PostgreSQL port
+        # 'OPTIONS': {
+        #     'sslmode': 'require',  # Ensure SSL connection
+        # },
     }
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': tmpPostgres.path.replace('/', ''),
+    #     'USER': tmpPostgres.username,
+    #     'PASSWORD': tmpPostgres.password,
+    #     'HOST': tmpPostgres.hostname,
+    #     'PORT': 5432,
+    # }
 
         # "default": {
         #     "ENGINE": env("DB_ENGINE", default="django.db.backends.sqlite3"),
